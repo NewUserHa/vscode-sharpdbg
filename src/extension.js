@@ -352,7 +352,7 @@ class SharpDbgAdapterDescriptorFactory {
     if (runtimeFlavor === 'desktopClr') {
       const desktopCliPath = findDesktopClrCliPath(cfg, workspaceFolder, this.context);
       if (!desktopCliPath) {
-        const message = 'Could not find the desktop CLR SharpDbg CLI executable. Checked dist/sharpdbg/net48/SharpDbg.Cli.exe and sharpdbg/artifacts/bin/SharpDbg.Cli/debug_net48/SharpDbg.Cli.exe.';
+        const message = 'Could not find the desktop CLR SharpDbg CLI executable. Checked dist/sharpdbg/net48/SharpDbg.Cli.exe and sharpdbg.mi/sharpdbg/artifacts/bin/SharpDbg.Cli/debug_net48/SharpDbg.Cli.exe.';
         log(this.outputChannel, message);
         throw new Error(message);
       }
@@ -373,10 +373,10 @@ class SharpDbgAdapterDescriptorFactory {
         this.context
       );
       const releaseDllPath = this.context.asAbsolutePath(
-        path.join('sharpdbg', 'artifacts', 'bin', 'SharpDbg.Cli', 'release', 'SharpDbg.Cli.dll')
+        path.join('sharpdbg.mi', 'sharpdbg', 'artifacts', 'bin', 'SharpDbg.Cli', 'release', 'SharpDbg.Cli.dll')
       );
       const debugDllPath = this.context.asAbsolutePath(
-        path.join('sharpdbg', 'artifacts', 'bin', 'SharpDbg.Cli', 'debug_net10.0', 'SharpDbg.Cli.dll')
+        path.join('sharpdbg.mi', 'sharpdbg', 'artifacts', 'bin', 'SharpDbg.Cli', 'debug_net10.0', 'SharpDbg.Cli.dll')
       );
       const message = `Could not find SharpDbg.Cli.dll. Checked ${configuredDllPath}, ${releaseDllPath}, and ${debugDllPath}.`;
       log(this.outputChannel, message);
@@ -424,10 +424,10 @@ function findCoreClrCliDllPath(cfg, workspaceFolder, context) {
     ? resolvePath(configuredCliDllPath, workspaceFolder, context)
     : context.asAbsolutePath(path.join('dist', 'sharpdbg', 'net10.0', 'SharpDbg.Cli.dll'));
   const releaseDllPath = context.asAbsolutePath(
-    path.join('sharpdbg', 'artifacts', 'bin', 'SharpDbg.Cli', 'release', 'SharpDbg.Cli.dll')
+    path.join('sharpdbg.mi', 'sharpdbg', 'artifacts', 'bin', 'SharpDbg.Cli', 'release', 'SharpDbg.Cli.dll')
   );
   const debugDllPath = context.asAbsolutePath(
-    path.join('sharpdbg', 'artifacts', 'bin', 'SharpDbg.Cli', 'debug_net10.0', 'SharpDbg.Cli.dll')
+    path.join('sharpdbg.mi', 'sharpdbg', 'artifacts', 'bin', 'SharpDbg.Cli', 'debug_net10.0', 'SharpDbg.Cli.dll')
   );
 
   return [configuredDllPath, releaseDllPath, debugDllPath].find((candidate) => candidate && fs.existsSync(candidate));
@@ -438,7 +438,7 @@ function findDesktopClrCliPath(cfg, workspaceFolder, context) {
     path.join('dist', 'sharpdbg', 'net48', 'SharpDbg.Cli.exe')
   );
   const debugExePath = context.asAbsolutePath(
-    path.join('sharpdbg', 'artifacts', 'bin', 'SharpDbg.Cli', 'debug_net48', 'SharpDbg.Cli.exe')
+    path.join('sharpdbg.mi', 'sharpdbg', 'artifacts', 'bin', 'SharpDbg.Cli', 'debug_net48', 'SharpDbg.Cli.exe')
   );
 
   return [configuredExePath, debugExePath].find((candidate) => candidate && fs.existsSync(candidate));

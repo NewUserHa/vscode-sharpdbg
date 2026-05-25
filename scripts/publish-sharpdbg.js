@@ -4,7 +4,7 @@ const { spawnSync } = require('child_process');
 const path = require('path');
 
 const repoRoot = path.resolve(__dirname, '..');
-const projectPath = path.join(repoRoot, 'sharpdbg', 'src', 'SharpDbg.Cli', 'SharpDbg.Cli.csproj');
+const projectPath = path.join(repoRoot, 'sharpdbg.mi', 'sharpdbg', 'src', 'SharpDbg.Cli', 'SharpDbg.Cli.csproj');
 const outputRoot = path.join(repoRoot, 'dist', 'sharpdbg');
 
 const publishTargets = [
