@@ -9,8 +9,8 @@ const outputRoot = path.join(repoRoot, 'dist', 'sharpdbg');
 
 const publishTargets = [
   {
-    framework: 'net10.0',
-    outputDir: path.join(outputRoot, 'net10.0'),
+    framework: 'net11.0',
+    outputDir: path.join(outputRoot, 'net11.0'),
     extraArgs: ['--self-contained', 'false', '-p:UseAppHost=false']
   },
   {

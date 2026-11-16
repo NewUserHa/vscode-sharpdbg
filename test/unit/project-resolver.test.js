@@ -55,7 +55,7 @@ test('uses mocked MSBuild for legacy projectPath resolution on Windows', async (
 
 test('launches SDK-style DLL outputs through dotnet', async () => {
   const projectPath = path.resolve(__dirname, '..', 'fixtures', 'DebuggeeApp', 'DebuggeeApp.csproj');
-  const outputPath = path.resolve(__dirname, '..', 'fixtures', 'DebuggeeApp', 'bin', 'Debug', 'net10.0', 'DebuggeeApp.dll');
+  const outputPath = path.resolve(__dirname, '..', 'fixtures', 'DebuggeeApp', 'bin', 'Debug', 'net11.0', 'DebuggeeApp.dll');
 
   const resolver = createProjectResolver({
     fs: {

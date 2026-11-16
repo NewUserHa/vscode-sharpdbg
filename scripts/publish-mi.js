@@ -13,7 +13,7 @@ const args = [
   '-c',
   'Release',
   '-f',
-  'net10.0',
+  'net11.0',
   '-o',
   outputDir,
   '--self-contained',

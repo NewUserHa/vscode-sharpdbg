@@ -63,7 +63,7 @@
         },
         "sharpdbg.cliDllPath": {
           "type": "string",
-          "default": "dist/sharpdbg/net10.0/SharpDbg.Cli.dll",
+          "default": "dist/sharpdbg/net11.0/SharpDbg.Cli.dll",
           "description": "Path to the framework-dependent SharpDbg CLI DLL."
         },
         "sharpdbg.dotnetPath": {
@@ -113,7 +113,7 @@
             "name": "Launch SharpDbg",
             "type": "sharpdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/Debug/net10.0/YourApp.dll",
+            "program": "${workspaceFolder}/bin/Debug/net11.0/YourApp.dll",
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false
           },

@@ -256,7 +256,7 @@ class SharpDbgConfigurationProvider {
         name: 'Launch SharpDbg',
         type: 'sharpdbg',
         request: 'launch',
-        program: '${workspaceFolder}/bin/Debug/net10.0/YourApp.dll',
+        program: '${workspaceFolder}/bin/Debug/net11.0/YourApp.dll',
         cwd: '${workspaceFolder}',
         stopAtEntry: false
       },
@@ -368,7 +368,7 @@ class SharpDbgAdapterDescriptorFactory {
     const dllPath = findCoreClrCliDllPath(cfg, workspaceFolder, this.context);
     if (!dllPath) {
       const configuredDllPath = resolvePath(
-        cfg.get('cliDllPath') || path.join('dist', 'sharpdbg', 'net10.0', 'SharpDbg.Cli.dll'),
+        cfg.get('cliDllPath') || path.join('dist', 'sharpdbg', 'net11.0', 'SharpDbg.Cli.dll'),
         workspaceFolder,
         this.context
       );
@@ -376,7 +376,7 @@ class SharpDbgAdapterDescriptorFactory {
         path.join('sharpdbg.mi', 'sharpdbg', 'artifacts', 'bin', 'SharpDbg.Cli', 'release', 'SharpDbg.Cli.dll')
       );
       const debugDllPath = this.context.asAbsolutePath(
-        path.join('sharpdbg.mi', 'sharpdbg', 'artifacts', 'bin', 'SharpDbg.Cli', 'debug_net10.0', 'SharpDbg.Cli.dll')
+        path.join('sharpdbg.mi', 'sharpdbg', 'artifacts', 'bin', 'SharpDbg.Cli', 'debug_net11.0', 'SharpDbg.Cli.dll')
       );
       const message = `Could not find SharpDbg.Cli.dll. Checked ${configuredDllPath}, ${releaseDllPath}, and ${debugDllPath}.`;
       log(this.outputChannel, message);
@@ -422,12 +422,12 @@ function findCoreClrCliDllPath(cfg, workspaceFolder, context) {
   const configuredCliDllPath = getConfiguredValue(cfg, 'cliDllPath');
   const configuredDllPath = configuredCliDllPath
     ? resolvePath(configuredCliDllPath, workspaceFolder, context)
-    : context.asAbsolutePath(path.join('dist', 'sharpdbg', 'net10.0', 'SharpDbg.Cli.dll'));
+    : context.asAbsolutePath(path.join('dist', 'sharpdbg', 'net11.0', 'SharpDbg.Cli.dll'));
   const releaseDllPath = context.asAbsolutePath(
     path.join('sharpdbg.mi', 'sharpdbg', 'artifacts', 'bin', 'SharpDbg.Cli', 'release', 'SharpDbg.Cli.dll')
   );
   const debugDllPath = context.asAbsolutePath(
-    path.join('sharpdbg.mi', 'sharpdbg', 'artifacts', 'bin', 'SharpDbg.Cli', 'debug_net10.0', 'SharpDbg.Cli.dll')
+    path.join('sharpdbg.mi', 'sharpdbg', 'artifacts', 'bin', 'SharpDbg.Cli', 'debug_net11.0', 'SharpDbg.Cli.dll')
   );
 
   return [configuredDllPath, releaseDllPath, debugDllPath].find((candidate) => candidate && fs.existsSync(candidate));

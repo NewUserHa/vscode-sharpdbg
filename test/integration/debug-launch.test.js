@@ -106,7 +106,7 @@ async function configureSharpDbgForFixture() {
 
   const candidates = [
     path.join(sharpdbgDir, 'SharpDbg.Cli.dll'),
-    path.join(sharpdbgDir, 'net10.0', 'SharpDbg.Cli.dll'),
+    path.join(sharpdbgDir, 'net11.0', 'SharpDbg.Cli.dll'),
     path.join(sharpdbgDir, 'net48', 'SharpDbg.Cli.dll')
   ];
 
@@ -186,7 +186,7 @@ suite('SharpDbg integration', () => {
     testLog('TEST START: launches from program');
 
     const fixtureDir = path.resolve(__dirname, '..', 'fixtures', 'DebuggeeApp');
-    const program = path.join(fixtureDir, 'bin', 'Debug', 'net10.0', 'DebuggeeApp.dll');
+    const program = path.join(fixtureDir, 'bin', 'Debug', 'net11.0', 'DebuggeeApp.dll');
     assert.ok(fs.existsSync(program), `fixture build output should exist at ${program}`);
 
     await launchFixtureApp({
@@ -228,7 +228,7 @@ suite('SharpDbg integration', () => {
 
     // Build the crash fixture to ensure output exists
     cp.execFileSync('dotnet', ['build', projectPath, '-c', 'Debug']);
-    const program = path.join(fixtureDir, 'bin', 'Debug', 'net10.0', 'DebuggeeAppCrash.dll');
+    const program = path.join(fixtureDir, 'bin', 'Debug', 'net11.0', 'DebuggeeAppCrash.dll');
     assert.ok(fs.existsSync(program), `fixture build output should exist at ${program}`);
 
     const extension = vscode.extensions.getExtension('lextudio.sharpdbg');
@@ -243,7 +243,7 @@ suite('SharpDbg integration', () => {
     let cliDll = null;
     const candidates = [
       path.join(sharpdbgDir, 'SharpDbg.Cli.dll'),
-      path.join(sharpdbgDir, 'net10.0', 'SharpDbg.Cli.dll'),
+      path.join(sharpdbgDir, 'net11.0', 'SharpDbg.Cli.dll'),
       path.join(sharpdbgDir, 'net48', 'SharpDbg.Cli.dll')
     ];
 
